@@ -62,3 +62,61 @@ This retrieves information like OS name, version, build number, free physical me
 - **Access**: You can access WMI remotely for system management tasks.
 
 ---
+
+## **🧾 WMI Classes Cheat Sheet**
+
+| 🎯 Purpose                        | 🧱 WMI Class                              | 🔎 Description |
+|----------------------------------|-------------------------------------------|----------------|
+| OS Info                          | `Win32_OperatingSystem`                   | OS version, build, architecture, memory |
+| Processor Info                   | `Win32_Processor`                         | CPU name, cores, load, speed |
+| BIOS Info                        | `Win32_BIOS`                              | BIOS version, manufacturer |
+| Motherboard Info                 | `Win32_BaseBoard`                         | Motherboard model, manufacturer |
+| RAM Info                         | `Win32_PhysicalMemory`                    | Installed RAM details |
+| Disk Drive Info                  | `Win32_DiskDrive`                         | Hard drives and SSDs |
+| Logical Disk (C:, D:) Info       | `Win32_LogicalDisk`                       | Drive letter, space used, free space |
+| Partition Info                   | `Win32_DiskPartition`                     | Partition size, type |
+| Network Adapter Info             | `Win32_NetworkAdapter`                    | NIC name, status |
+| Network Config Info              | `Win32_NetworkAdapterConfiguration`       | IP, MAC, DNS settings |
+| Installed Software               | `Win32_Product`                           | Installed apps (⚠️ slow & heavy) |
+| Services                         | `Win32_Service`                           | List and control services |
+| Running Processes                | `Win32_Process`                           | List of active processes |
+| Startup Programs                 | `Win32_StartupCommand`                    | Programs set to auto-start |
+| Battery Info (Laptops)           | `Win32_Battery`                           | Battery status and capacity |
+| User Accounts                    | `Win32_UserAccount`                       | List of local users |
+| Logged-in Users                  | `Win32_ComputerSystem`                    | Includes username |
+| System Boot Time                 | `Win32_OperatingSystem`                   | Look at `LastBootUpTime` |
+
+---
+
+## ⚙️ **PowerShell Example Commands**
+
+```powershell
+# Get OS Info
+Get-WmiObject -Class Win32_OperatingSystem
+
+# Get CPU Info
+Get-WmiObject -Class Win32_Processor
+
+# Get Logical Drives
+Get-WmiObject -Class Win32_LogicalDisk
+
+# List Running Processes
+Get-WmiObject -Class Win32_Process | Select-Object Name, ProcessId
+
+# Get Installed Physical RAM
+Get-WmiObject -Class Win32_PhysicalMemory
+```
+
+---
+
+## 🚀 Tips
+
+- Use `Get-WmiObject` or the newer `Get-CimInstance` in PowerShell 5+.
+- Use `Select-Object *` to see all properties.
+- Use filtering to narrow down results:
+  ```powershell
+  Get-WmiObject -Class Win32_Service -Filter "State='Running'"
+  ```
+
+---
+
