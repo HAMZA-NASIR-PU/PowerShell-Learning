@@ -122,3 +122,45 @@ Get-WmiObject -Class Win32_PhysicalMemory
 
 ---
 
+## 📋 PowerShell Cmdlet Parameter Types
+
+Consider thw following syntax:
+
+```powershell
+Get-CimInstance
+   [-ClassName] <String>
+   [-ComputerName <String[]>]
+   [-KeyOnly]
+   [-Namespace <String>]
+   [-OperationTimeoutSec <UInt32>]
+   [-QueryDialect <String>]
+   [-Shallow]
+   [-Filter <String>]
+   [-Property <String[]>]
+   [<CommonParameters>]
+```
+
+| Parameter           | Type              | Description |
+|---------------------|-------------------|-------------|
+| `[-ClassName]`       | **Named**          | The parameter is specified by its name (`-ClassName "value"`). |
+| `[-ComputerName]`    | **Named, Array**   | This parameter can accept multiple values (`-ComputerName "Computer1", "Computer2"`). |
+| `[-KeyOnly]`         | **Switch**         | A switch parameter, used as a flag. It's either specified or not (`-KeyOnly`). |
+| `[-Namespace]`       | **Named**          | Named parameter for specifying a namespace (`-Namespace "root/cimv2"`). |
+| `[-OperationTimeoutSec]` | **Named**       | Named parameter with a specific type (`UInt32`, a 32-bit unsigned integer). |
+| `[-QueryDialect]`    | **Named**          | Named parameter, typically used for string input (`-QueryDialect "WQL"`). |
+| `[-Shallow]`         | **Switch**         | Switch parameter, either provided or not (`-Shallow`). |
+| `[-Filter]`          | **Named**          | A named parameter that takes a string input for filtering data (`-Filter "Name='Server1'"`). |
+| `[-Property]`        | **Named, Array**   | Accepts multiple string values, often used to specify properties to include (`-Property "Name", "Age"`). |
+| `[<CommonParameters>]` | **Common Parameters** | These are standard parameters available to most cmdlets, such as `-Verbose`, `-Debug`, `-ErrorAction`, etc. |
+
+---
+
+### Key Parameter Types:
+
+- **Named Parameters**: Specified by their name, e.g., `-ClassName "value"`.
+- **Switch Parameters**: Boolean flags, e.g., `-KeyOnly`, `-Shallow`.
+- **Array Parameters**: Accepts multiple values, e.g., `-ComputerName "server1", "server2"`.
+- **Common Parameters**: Universal parameters that most cmdlets accept (like `-Verbose`, `-ErrorAction`).
+
+---
+
